@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
 
 project(PluginTemplate VERSION 0.0.0)
+
 set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/PluginTemplate")
+set(SRC_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 juce_add_plugin(${PROJECT_NAME}
     COMPANY_NAME kiztam
@@ -16,8 +18,8 @@ juce_add_plugin(${PROJECT_NAME}
 
 target_sources(${PROJECT_NAME}
     PRIVATE
-        src/PluginEditor.cpp
-        src/PluginProcessor.cpp
+        ${SRC_DIR}/PluginEditor.cpp
+        ${SRC_DIR}/PluginProcessor.cpp
         ${INCLUDE_DIR}/PluginEditor.h
         ${INCLUDE_DIR}/PluginProcessor.h
 )
@@ -47,3 +49,26 @@ target_compile_definitions(${PROJECT_NAME}
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
 )
+
+# Visual Studio filters to separate Plugin files from JUCE files.
+
+# Plugin files
+source_group(
+    TREE ${SRC_DIR}
+    PREFIX "Plugin Sources"
+    FILES ${SRC_DIR}/PluginEditor.cpp ${SRC_DIR}/PluginProcessor.cpp
+)
+
+source_group(
+    TREE ${INCLUDE_DIR}
+    PREFIX "Plugin Headers"
+    FILES ${INCLUDE_DIR}/PluginEditor.h ${INCLUDE_DIR}/PluginProcessor.h
+)
+
+# JUCE files
+if (DEFINED JUCE_SOURCE_DIR)
+    source_group(
+        TREE ${JUCE_SOURCE_DIR}
+        PREFIX "JUCE"
+    )
+endif()
