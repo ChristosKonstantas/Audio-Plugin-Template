@@ -34,7 +34,6 @@ else()
     GIT_TAG        8.0.11
   )
   # By default, FetchContent uses ${CMAKE_BINARY_DIR}/_deps for sources/builds.
-  # This keeps CPM completely out of your build tree.
   FetchContent_MakeAvailable(JUCE)
 endif()
 
