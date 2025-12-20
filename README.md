@@ -1,24 +1,70 @@
 # Audio-Plugin-Template
 
-## Description
+## Overview
 
-In this audio plugin template:
+Audio-Plugin-Template is a JUCE-based audio plugin starter template designed for accelerating development. It provides a straightforward structure and automates common setup tasks, allowing you to focus on your plugin code rather than boilerplate configuration.
 
-If the environment variable **JUCE_LIB** is defined, the project uses a local JUCE source checkout.
+* Supports local JUCE checkout (via `JUCE_LIB`) or automatic fetching using CMake FetchContent (if environment variable `JUCE_LIB` is not set).
 
-Otherwise, JUCE is fetched via CMake’s FetchContent and built as part of the project: `build/_deps/juce-src` (sources) and `build/_deps/juce-build` (build artifacts).
+* JUCE modules are statically linked into the plugin for easy distribution.
 
-In both cases, JUCE is built from source and its modules are statically linked into the plugin.
+* The project is structured to allow easy renaming of plugin classes, files, and CMake targets via a simple JSON configuration in `config/config.json`.
+
+## Instructions
+
+### Step 1 - Configure your Plugin (Optional)
+Before building the plugin, customize your settings in `config/config.json`.
+
+#### Example `config.json`:
+```
+{
+  "plugin_name": "NewPlugin",
+  "company_name": "NewCompany",
+  "plugin_code": "0000",
+  "manufacturer_code": "AAAA",
+  "is_synth": false,
+  "needs_midi_input": false,
+  "needs_midi_output": false,
+  "formats": "VST3",
+}
+```
+
+Notes:
+
+* `plugin_name` is used for class names, includes, and CMake targets.
+
+* `plugin_code` and `manufacturer_code` must be 4-character strings.
+
+Once configured, run the script to apply all renames automatically:
+
+```
+python config.py
+```
 
 
-## Debug:
+Note: This script should be run once on a fresh clone. It renames directories, files, class names, includes, and updates CMake targets according to `config.json`.
+
+### Step 2 - Build Project
+You can build the plugin in **Debug** or **Release** mode. In your project root directory execute:
+
+#### Debug
 ```
 cmake -B build
 cmake --build build
 ```
 
-## Release:
+#### Release
 ```
 cmake -B build
 cmake --build build --config Release
 ```
+
+### Step 3 - Run and Test
+
+The plugin will be available in the chosen format (VST3 by default). You can open it in your DAW for testing.
+
+## Notes and Best Practices
+
+* Valid Plugin Name: Ensure `plugin_name` is a valid C++ identifier (letters, digits, underscores; cannot start with a digit).
+
+* Cleaning Builds: After renaming via `config.py`, delete the build directory before rebuilding to avoid stale CMake references.
