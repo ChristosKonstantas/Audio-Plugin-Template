@@ -16,7 +16,7 @@ Audio-Plugin-Template is a JUCE-based audio plugin starter template designed for
 Before building the plugin, customize your settings in `config/config.json`.
 
 #### Example `config.json`:
-```
+```json
 {
   "plugin_name": "NewPlugin",
   "company_name": "NewCompany",
