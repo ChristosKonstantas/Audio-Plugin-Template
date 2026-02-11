@@ -1,6 +1,5 @@
-#pragma once
-
-#include "PluginProcessor.h"
+#ifndef PLUGINEDITOR_HPP
+#define PLUGINEDITOR_HPP
 
 //==============================================================================
 class PluginTemplateAudioProcessorEditor final : public juce::AudioProcessorEditor
@@ -20,3 +19,5 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginTemplateAudioProcessorEditor)
 };
+
+#endif

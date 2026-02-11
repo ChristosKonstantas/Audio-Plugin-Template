@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.22)
 
 project(PluginTemplate VERSION 0.0.0)
 
-set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include/PluginTemplate")
 set(SRC_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 juce_add_plugin(${PROJECT_NAME}
@@ -20,13 +19,13 @@ target_sources(${PROJECT_NAME}
     PRIVATE
         ${SRC_DIR}/PluginEditor.cpp
         ${SRC_DIR}/PluginProcessor.cpp
-        ${INCLUDE_DIR}/PluginEditor.h
-        ${INCLUDE_DIR}/PluginProcessor.h
+        ${SRC_DIR}/PluginEditor.hpp
+        ${SRC_DIR}/PluginProcessor.hpp
 )
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 target_link_libraries(${PROJECT_NAME}
@@ -60,9 +59,9 @@ source_group(
 )
 
 source_group(
-    TREE ${INCLUDE_DIR}
+    TREE ${SRC_DIR}
     PREFIX "Plugin Headers"
-    FILES ${INCLUDE_DIR}/PluginEditor.h ${INCLUDE_DIR}/PluginProcessor.h
+    FILES ${SRC_DIR}/PluginEditor.hpp ${SRC_DIR}/PluginProcessor.hpp
 )
 
 # JUCE files

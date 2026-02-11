@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLUGINPROCESSOR_HPP
+#define PLUGINPROCESSOR_HPP
 
 #include <juce_audio_processors/juce_audio_processors.h>
 
@@ -46,3 +47,5 @@ private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginTemplateAudioProcessor)
 };
+
+#endif

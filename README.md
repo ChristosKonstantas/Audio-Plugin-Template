@@ -4,9 +4,38 @@
 
 Audio-Plugin-Template is a JUCE-based audio plugin starter template designed for accelerating development. It provides a straightforward structure and automates common setup tasks, allowing you to focus on your plugin code rather than boilerplate configuration.
 
-* Supports local JUCE checkout (via `JUCE_LIB`) or automatic fetching using CMake FetchContent (if environment variable `JUCE_LIB` is not set).
+* Supports local JUCE checkout (via `JUCE_LIB`) or automatic fetching using CMake FetchContent (if environment variable `JUCE_LIB` is not set). 
+  
+  If you want to set the environment variable execute:
 
-* JUCE modules are statically linked into the plugin for easy distribution.
+  **Windows (Powershell)**
+  
+  Temporary:
+  ```
+  $env:JUCE_LIB="C:\absolute\path\to\JUCE"
+  ```
+  
+  Persistent:
+  ```
+  setx JUCE_LIB "\absolute\path\to\JUCE"
+  ```
+  
+  **Linux / macOS**
+  
+  Temporary (current shell session only):
+  ```
+  export JUCE_LIB="/absolute/path/to/JUCE"
+  ```
+
+  Persistent (add to ~/.bashrc, ~/.zshrc, etc):
+  ```
+  echo 'export JUCE_LIB="/absolute/path/to/JUCE"' >> ~/.bashrc
+  source ~/.bashrc
+  ```
+  Define the environment variable `JUCE_LIB` to reference the JUCE source root directory (the directory containing `CMakeLists.txt` and `modules/`). 
+  
+  If you use a different environment variable name in your build system, replace `JUCE_LIB` in `CMakeLists.txt` accordingly with your defined environment variable name.
+* JUCE modules are statically linked into the plugin for easy distribution, thus object code is embedded into your plugin binary. But, the plugin itself is a dynamic library.
 
 * The project is structured to allow easy renaming of plugin classes, files, and CMake targets via a simple JSON configuration in `config/config.json`.
 

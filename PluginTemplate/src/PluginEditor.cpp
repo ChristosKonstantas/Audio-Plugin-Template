@@ -1,5 +1,5 @@
-#include "PluginTemplate/PluginProcessor.h"
-#include "PluginTemplate/PluginEditor.h"
+#include "PluginProcessor.hpp"
+#include "PluginEditor.hpp"
 
 //==============================================================================
 PluginTemplateAudioProcessorEditor::PluginTemplateAudioProcessorEditor (PluginTemplateAudioProcessor& p)
@@ -23,7 +23,7 @@ void PluginTemplateAudioProcessorEditor::paint (juce::Graphics& g)
 
     g.setColour (juce::Colours::white);
     g.setFont (15.0f);
-    g.drawFittedText ("Audio Plugin Template", getLocalBounds(), juce::Justification::centred, 1);
+    g.drawFittedText ("PluginTemplate", getLocalBounds(), juce::Justification::centred, 1);
 }
 
 void PluginTemplateAudioProcessorEditor::resized()
