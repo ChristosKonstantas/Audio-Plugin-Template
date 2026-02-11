@@ -64,7 +64,7 @@ if __name__ == "__main__":
     """
         (3) Replace text inside files
     """
-    exts = {".cpp", ".h", ".cmake", ".md"}
+    exts = {".cpp", ".h", ".hpp", ".cmake", ".md"}
     special_names = {"CMakeLists.txt"}
 
     replacements = { OLD_NAME: new_name,
