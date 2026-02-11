@@ -12,7 +12,7 @@ Audio-Plugin-Template is a JUCE-based audio plugin starter template designed for
   
   Temporary:
   ```
-  $env:JUCE_LIB="C:\absolute\path\to\JUCE"
+  $env:JUCE_LIB="\absolute\path\to\JUCE"
   ```
   
   Persistent:
